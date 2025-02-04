@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Slf4j
-@Component("strategySacPrivate")
+@Component
 public class DeParaSacProdutoPrivateStrategyImpl extends ProductRuleTemplateMethod {
 
     private ProdutoCliente produtoCliente;
@@ -22,9 +22,8 @@ public class DeParaSacProdutoPrivateStrategyImpl extends ProductRuleTemplateMeth
     @Override
     protected List<PortfolioProdutoDto> aplicarEstrategia(List<PortfolioProdutoDto> produtos) {
 
+        log.info("Strategy - buscar dados SAC para compor produtos");
         produtos.parallelStream().forEach(produto->{
-
-            log.info("Buscando dados SAC para compor produtos");
 
             var produtoDto = produtoCliente.buscarProdutoSac(produto.getCodigoProduto());
 

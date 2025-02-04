@@ -1,9 +1,11 @@
 package br.com.vinicius.teste.dataprovider.produtos;
 
 import br.com.vinicius.teste.models.produto.ProdutoApiDto;
+import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
+@Component
 public class ProdutoCliente {
 
     public ProdutoApiDto buscarProdutoFake(String codigoProduto) {

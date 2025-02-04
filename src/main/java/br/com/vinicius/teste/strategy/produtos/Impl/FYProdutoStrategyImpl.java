@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Slf4j
-@Component("strategyProdutoFY")
+@Component
 public class FYProdutoStrategyImpl extends ProductRuleTemplateMethod {
 
     @Override

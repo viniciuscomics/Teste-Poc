@@ -22,9 +22,9 @@ public class ClienteVarejoStrategyImpl implements ClienteStrategy {
     }
 
     @Override
-    public PortfolioDto processarPortfolio(List<PortfolioProdutoDto> portfolioProdutos) {
+    public PortfolioDto processarProdutosPortfolio(List<PortfolioProdutoDto> portfolioProdutos) {
 
-        log.info("Iniciando apllicação de regras para de produtos cliente varejo.");
+        log.info("Iniciando aplicação de regras para de produtos cliente varejo.");
 
          var produtos = chainOfStrategy.processarProduto(portfolioProdutos);
 

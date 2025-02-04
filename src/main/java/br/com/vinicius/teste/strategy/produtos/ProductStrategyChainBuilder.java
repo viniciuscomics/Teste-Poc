@@ -44,23 +44,22 @@ public class ProductStrategyChainBuilder {
     private ProdutoStrategy builderChainOfResponsability(Class<? extends ProdutoStrategy>... produtoStrategiesClassImpl){
 
         ProdutoStrategy chainOfResponsabilityStrategy = null;
+        ProdutoStrategy current = null;
 
         for(var produtoStrategyClass : produtoStrategiesClassImpl){
-
-            ProdutoStrategy current = null;
 
             for(ProdutoStrategy strategy: implStrategyList){
 
                 if(produtoStrategyClass.isInstance(strategy)){
 
-                    current = strategy;
-
                     if(chainOfResponsabilityStrategy == null){
                         chainOfResponsabilityStrategy = strategy;
                     }
                     else{
-                        chainOfResponsabilityStrategy.setNextProductStrategy(strategy);
+                        current.setNextProductStrategy(strategy);
                     }
+
+                    current = strategy;
                     break;
                 }
             }

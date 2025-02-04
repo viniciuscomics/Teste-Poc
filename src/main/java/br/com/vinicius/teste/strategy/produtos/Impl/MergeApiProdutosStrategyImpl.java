@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Slf4j
-@Component("strategyMergeAPIProduto")
+@Component
 public class MergeApiProdutosStrategyImpl extends ProductRuleTemplateMethod {
 
-    private ProdutoCliente produtoCliente;
+    private final ProdutoCliente produtoCliente;
 
     public MergeApiProdutosStrategyImpl(ProdutoCliente produtoCliente){
         this.produtoCliente = produtoCliente;
@@ -21,9 +21,9 @@ public class MergeApiProdutosStrategyImpl extends ProductRuleTemplateMethod {
     @Override
     protected List<PortfolioProdutoDto> aplicarEstrategia(List<PortfolioProdutoDto> produtos) {
 
-        produtos.parallelStream().forEach(produto->{
+        log.info("Strategy - Buscar dados na api/produto para compor produtos");
 
-            log.info("Buscando dados para compor produtos");
+        produtos.parallelStream().forEach(produto->{
 
             var produtoDto = produtoCliente.buscarProdutoFake(produto.getCodigoProduto());
 

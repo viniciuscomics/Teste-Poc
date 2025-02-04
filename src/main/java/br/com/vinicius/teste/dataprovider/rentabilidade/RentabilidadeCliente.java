@@ -22,7 +22,7 @@ public class RentabilidadeCliente {
 
         return PosicaoClienteDto.builder()
                 .codigoCliente(123)
-                .dataPosicao(LocalDateTime.now())
+                .dataBase(LocalDateTime.now())
                 .produtos(produtos)
                 .build();
     }

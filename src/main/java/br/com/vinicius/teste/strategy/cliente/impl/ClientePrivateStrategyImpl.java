@@ -9,7 +9,7 @@ import java.util.List;
 public class ClientePrivateStrategyImpl implements ClienteStrategy {
 
     @Override
-    public PortfolioDto processarPortfolio(List<PortfolioProdutoDto> portfolioProduto) {
+    public PortfolioDto processarProdutosPortfolio(List<PortfolioProdutoDto> portfolioProduto) {
         return null;
     }
 

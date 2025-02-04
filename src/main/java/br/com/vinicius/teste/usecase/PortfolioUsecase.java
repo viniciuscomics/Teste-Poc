@@ -5,7 +5,6 @@ import br.com.vinicius.teste.models.dto.PortfolioDto;
 import br.com.vinicius.teste.models.dto.PortfolioProdutoDto;
 import br.com.vinicius.teste.models.rentabilidade.PosicaoClienteDto;
 import br.com.vinicius.teste.models.rentabilidade.ProdutoRentabilidadeDto;
-import br.com.vinicius.teste.service.TratarProdutoService;
 import br.com.vinicius.teste.strategy.cliente.ClienteStrategy;
 import org.springframework.stereotype.Component;
 
@@ -36,12 +35,11 @@ public class PortfolioUsecase {
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Estratégia não encontrada para o segmento: " + segmento));
 
-        strategySegmento.processarPortfolio(portfolioDto.getPortfolioProduto());
+        portfolioDto = strategySegmento.processarProdutosPortfolio(portfolioDto.getPortfolioProduto());
 
+        // aplicar outras estrategias. EX: calculo de percentuais
 
-
-
-        return null;
+        return portfolioDto;
     }
 
     //Metodos abaixo sera trocado pelo mapperStruct
@@ -70,6 +68,7 @@ public class PortfolioUsecase {
                 .nomeProduto(produtoRentabilidade.nomeProduto())
                 .taxa(produtoRentabilidade.taxa())
                 .quantidade(produtoRentabilidade.quantidade())
+                .totalAlocado(BigDecimal.TEN)
                 .dataPosicao(produtoRentabilidade.dataPosicao())
                 .tipoProduto(produtoRentabilidade.tipoProduto())
                 .build();
